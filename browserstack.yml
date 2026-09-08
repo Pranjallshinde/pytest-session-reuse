@@ -1,0 +1,37 @@
+# =============================
+# BrowserStack Credentials
+# =============================
+userName: pranjalshinde_cZeuj6
+accessKey: zpqKZPA5z6b7TB9VVJ3S
+
+# =============================
+# Reporting
+# =============================
+projectName: GS-Automation
+buildName: Wikipedia-Session-Reuse
+buildIdentifier: '#${BUILD_NUMBER}'
+
+# =============================
+# Platform
+# =============================
+platforms:
+  - platformName: android
+    deviceName: Samsung Galaxy S23
+    osVersion: "13.0"
+
+parallelsPerPlatform: 1
+
+# =============================
+# App
+# =============================
+app: bs://8f51b338b22320f9bd03095226efd3340c3050c0
+
+# =============================
+# Debugging
+# =============================
+networkLogs: true
+deviceLogs: true
+appiumLogs: true
+video: true
+debug: false
+testReporting: true
