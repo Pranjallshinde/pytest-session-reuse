@@ -1,8 +1,8 @@
 # =============================
 # BrowserStack Credentials
 # =============================
-userName: pranjalshinde_cZeuj6
-accessKey: zWqsnX9fetaDmPdGozNM
+userName: your_username
+accessKey: <redacted>
 
 # =============================
 # Reporting
@@ -24,7 +24,7 @@ parallelsPerPlatform: 1
 # =============================
 # App
 # =============================
-app: bs://8f51b338b22320f9bd03095226efd3340c3050c0
+app: bs://your_app_id
 
 # =============================
 # Debugging
