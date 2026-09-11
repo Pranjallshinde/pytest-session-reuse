@@ -142,7 +142,7 @@ class TestWikipediaSessionReuse:
 
             # Verify search still works on slow network
             open_search_and_type(driver, "Python")
-            results_list = wait_for(driver, SEARCH_RESULTS, timeout=30)
+            results_list = wait_for(driver, SEARCH_RESULTS, timeout=60)
             assert results_list.is_displayed(), "Search results not visible on slow network"
             mark_test_status(driver, "passed", "Network profile changed mid-session successfully")
         except Exception as e:

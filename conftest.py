@@ -29,18 +29,12 @@ def set_network_profile(driver, profile: str) -> None:
     Works throughout the session lifetime because the Appium session stays
     open until driver.quit() — no premature session closure between tests.
 
-    Note: setNetworkProfile may not be supported in all SDK execution modes;
-    failures are logged but do not abort the test.
     """
-    import logging
     payload = json.dumps({
-        "action": "setNetworkProfile",
+        "action": "update_network",
         "arguments": {"networkProfile": profile}
     })
-    try:
-        driver.execute_script(f"browserstack_executor: {payload}")
-    except Exception as e:
-        logging.warning(f"set_network_profile({profile!r}) skipped: {e}")
+    driver.execute_script(f"browserstack_executor: {payload}")
 
 
 def mark_test_status(driver, status: str, reason: str = "") -> None:
@@ -59,13 +53,13 @@ def mark_test_status(driver, status: str, reason: str = "") -> None:
         pass
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="class")
 def driver():
     """
-    Session-scoped Appium driver fixture.
+    Class-scoped Appium driver fixture.
 
     - noReset=True  -> app is NOT reinstalled between test methods
-    - driver.quit() -> called ONCE after all tests finish
+    - driver.quit() -> called ONCE after all tests in the class finish
     """
     options = UiAutomator2Options()
     options.platform_name = "Android"
@@ -79,7 +73,7 @@ def driver():
 
     import os
     bs_user = os.environ.get("BROWSERSTACK_USERNAME", "pranjalshinde_cZeuj6")
-    bs_key  = os.environ.get("BROWSERSTACK_ACCESS_KEY", "zpqKZPA5z6b7TB9VVJ3S")
+    bs_key  = os.environ.get("BROWSERSTACK_ACCESS_KEY", "zWqsnX9fetaDmPdGozNM")
 
     # BrowserStack-specific capabilities (device, project/build metadata)
     # These mirror browserstack.yml but must be set explicitly when using a
